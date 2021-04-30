@@ -1,0 +1,54 @@
+@use "../../partials/mixins.scss" as *;
+@use "../../partials/color-palette.scss" as *;
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 1rem;
+
+	&__upload {
+		display: flex;
+		gap: 1rem;
+	}
+
+	&__upload-input {
+		display: none;
+	}
+
+	&__upload-button {
+		@include button-styling;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.5rem;
+		width: 8rem;
+		height: 3rem;
+		cursor: pointer;
+	}
+
+	&__search-input {
+		height: 3rem;
+		width: 20rem;
+	}
+
+	&__user {
+		display: flex;
+		gap: 1rem;
+	}
+
+	&__user-login {
+		@include alt-link-button-styling;
+		height: 3rem;
+		width: 8rem;
+		font-size: 1.5rem;
+	}
+
+	&__user-signup {
+		@include link-button-styling;
+		height: 3rem;
+		width: 8rem;
+		font-size: 1.5rem;
+	}
+}
