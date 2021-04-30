@@ -46,3 +46,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+a, a::after, a::before {
+	text-decoration: none;
+	color: inherit;
+}
