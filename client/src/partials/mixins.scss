@@ -5,4 +5,47 @@
 	color: $white;
 	border-radius: 5px;
 	background: $secondary-green;
+
+	&:hover {
+		background: $primary-green;
+	}
+}
+
+@mixin link-button-styling {
+	border: none;
+	color: $white;
+	border-radius: 5px;
+	background: $secondary-green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	& > a {
+		height: fit-content;
+	}
+
+	&:hover {
+		background: $primary-green;
+	}
+}
+
+@mixin alt-link-button-styling {
+	border: none;
+	color: $primary-green;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	& > a {
+		height: fit-content;
+	}
+
+	&:hover {
+		color: black;
+	}
+}
+
+@mixin input-styling {
+	border: none;
 }
