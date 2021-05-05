@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ImageList from "../../components/ImageList/ImageList";
 import Navbar from "../../components/Navbar/Navbar";
+import UploadedImageObject from "../../interfaces/UploadedImageObject";
 import "./HomePage.scss";
 import recursiveFileReader from "../../functions/RecursiveFileReader";
 
 const HomePage: React.FC = () => {
-	const [ uploadedImages, setUploadedImages ] = useState<Array<File> | []>([]);
+	const [ uploadedImages, setUploadedImages ] = useState<Array<UploadedImageObject> | []>([]);
+	useEffect(() => {
+		axios
+			.get("http://localhost:8000/upload")
+			.then(res => {
+				const images = res.data.images as Array<UploadedImageObject>;
+				setUploadedImages(images || []);
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}, []);
 
 	const submitUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files as FileList;
@@ -24,11 +37,6 @@ const HomePage: React.FC = () => {
 					})
 			});
 
-		for (let i = 0; i < files.length; i++) {
-			tempArr.push(files.item(i) as File);
-		};
-
-		setUploadedImages([...uploadedImages, ...tempArr]);
 	}
 
 	return (
