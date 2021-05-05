@@ -2,10 +2,16 @@
 @use "../../partials/color-palette.scss" as *;
 
 .navbar {
+	position: sticky;
+	z-index: 100;
+	top: 0;
+	left: 0;
 	display: flex;
 	align-items: center;
+	background: $primary-cream;
 	justify-content: space-between;
 	padding: 1rem 1rem;
+	box-shadow: 0 0 10px 0 black;
 
 	&__upload {
 		display: flex;
