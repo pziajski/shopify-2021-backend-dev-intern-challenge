@@ -1,0 +1,27 @@
+@use "../../partials/mixins.scss" as *;
+@use "../../partials/color-palette.scss" as *;
+
+.image-list-item {
+	border-radius: 5px;
+	height: 400px;
+
+	&:hover {
+		animation: image-hover 0.2s linear forwards;
+		cursor: pointer;
+	}
+
+	&__image {
+		height: inherit;
+		object-fit: cover;
+		border-radius: 5px;
+	}
+}
+
+@keyframes image-hover {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
