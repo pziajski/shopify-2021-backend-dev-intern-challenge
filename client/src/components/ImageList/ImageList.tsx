@@ -7,12 +7,14 @@ const ImageList: React.FC<{ uploadedImages: Array<UploadedImageObject> }> = ({ u
 	return (
 		<ul className="image-list">
 			{
-				(uploadedImages as Array<UploadedImageObject>).map((imageObj, index) =>
-					<li key={index}>
-						<ImageListItem
-							imageObj={imageObj} />
-					</li>
-				)
+				uploadedImages.length > 0
+					? (uploadedImages as Array<UploadedImageObject>).sort((a, b) => new Date(b.upload_date).getTime() - new Date(a.upload_date).getTime()).map((imageObj, index) =>
+						<li key={index}>
+							<ImageListItem
+								imageObj={imageObj} />
+						</li>
+					)
+					: <h1 className="image-list__status"> Loading Images...</h1>
 			}
 		</ul>
 	)
