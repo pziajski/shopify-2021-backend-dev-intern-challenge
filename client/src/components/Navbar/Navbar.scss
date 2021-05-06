@@ -13,6 +13,10 @@
 	padding: 1rem 1rem;
 	box-shadow: 0 0 10px 0 black;
 
+	&__title {
+		font-size: 1.5rem;
+	}
+
 	&__upload {
 		display: flex;
 		gap: 1rem;
@@ -32,29 +36,5 @@
 		width: 8rem;
 		height: 3rem;
 		cursor: pointer;
-	}
-
-	&__search-input {
-		height: 3rem;
-		width: 20rem;
-	}
-
-	&__user {
-		display: flex;
-		gap: 1rem;
-	}
-
-	&__user-login {
-		@include alt-link-button-styling;
-		height: 3rem;
-		width: 8rem;
-		font-size: 1.5rem;
-	}
-
-	&__user-signup {
-		@include link-button-styling;
-		height: 3rem;
-		width: 8rem;
-		font-size: 1.5rem;
 	}
 }
