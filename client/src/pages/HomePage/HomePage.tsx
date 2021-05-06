@@ -43,6 +43,11 @@ const HomePage: React.FC = () => {
 		<div className="home-page">
 			<Navbar submitUpload={submitUpload} />
 			<ImageList uploadedImages={uploadedImages} />
+			{
+				uploadingState
+					? <HoverDiv />
+					: <></>
+			}
 		</div>
 	)
 }
