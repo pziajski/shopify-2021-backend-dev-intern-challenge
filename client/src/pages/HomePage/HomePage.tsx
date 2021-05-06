@@ -5,12 +5,15 @@ import Navbar from "../../components/Navbar/Navbar";
 import UploadedImageObject from "../../interfaces/UploadedImageObject";
 import "./HomePage.scss";
 import recursiveFileReader from "../../functions/RecursiveFileReader";
+import HoverDiv from "../../components/HoverDiv/HoverDiv";
+import { API_ENDPOINT } from "../../App";
 
 const HomePage: React.FC = () => {
+	const [uploadingState, setUploadingState] = useState(false);
 	const [ uploadedImages, setUploadedImages ] = useState<Array<UploadedImageObject> | []>([]);
 	useEffect(() => {
 		axios
-			.get("http://localhost:8000/upload")
+			.get(`${API_ENDPOINT}/upload`)
 			.then(res => {
 				const images = res.data.images as Array<UploadedImageObject>;
 				setUploadedImages(images || []);
@@ -23,16 +26,18 @@ const HomePage: React.FC = () => {
 	const submitUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files as FileList;
 		const uploadedList: Array<UploadedImageObject> = [];
+		setUploadingState(true);
 		(recursiveFileReader(uploadedList, files) as Promise<Array<UploadedImageObject>>)
 			.then(arr => {
-				console.log(arr);
-				setUploadedImages([...uploadedImages, ...arr]);
 				axios
-					.post("http://localhost:8000/upload", { images: JSON.stringify(arr) })
-					.then(res => {
-						console.log(res);
+					.post(`${API_ENDPOINT}/upload`, { images: JSON.stringify(arr) })
+					.then(() => {
+						setUploadedImages([...uploadedImages, ...arr]);
+						setUploadingState(false);
 					})
 					.catch(err => {
+						window.alert("Images exceed a max of 50mb.\nPlease try less files.")
+						setUploadingState(false);
 						console.log(err);
 					})
 			});
