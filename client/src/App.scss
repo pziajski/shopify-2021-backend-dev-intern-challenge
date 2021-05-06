@@ -1,8 +1,0 @@
-@use "./partials/reset.scss";
-@use "partials/color-palette.scss" as *;
-
-.App {
-  min-height: 100vh;
-  height: 100%;
-  background: $primary-cream;
-}

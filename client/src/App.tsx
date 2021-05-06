@@ -1,17 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import './App.scss';
 import HomePage from './pages/HomePage/HomePage';
+
+export const API_ENDPOINT = "http://localhost:8000";
 
 const App: React.FC = () => {
     return (
-        <div className="App">
+        <>
             <BrowserRouter>
                 <Switch>
                     <Route path="/" exact component={HomePage} />
                 </Switch>
             </BrowserRouter>
-        </div>
+        </>
     );
 }
 
