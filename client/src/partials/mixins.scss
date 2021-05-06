@@ -1,6 +1,16 @@
 @use "./color-palette.scss" as *;
 
+@mixin no-select {
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
 @mixin button-styling {
+	@include no-select;
 	border: none;
 	color: $white;
 	border-radius: 5px;
@@ -12,6 +22,7 @@
 }
 
 @mixin link-button-styling {
+	@include no-select;
 	border: none;
 	color: $white;
 	border-radius: 5px;
@@ -30,6 +41,7 @@
 }
 
 @mixin alt-link-button-styling {
+	@include no-select;
 	border: none;
 	color: $primary-green;
 	border-radius: 5px;
