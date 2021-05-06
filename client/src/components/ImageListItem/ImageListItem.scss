@@ -4,6 +4,7 @@
 .image-list-item {
 	border-radius: 5px;
 	height: 400px;
+	border: 1px solid black;
 
 	&:hover {
 		animation: image-hover 0.2s linear forwards;
@@ -11,8 +12,9 @@
 	}
 
 	&__image {
-		height: inherit;
-		object-fit: cover;
+		max-width: auto;
+		max-height: 100%;
+		object-fit: contain;
 		border-radius: 5px;
 	}
 }
