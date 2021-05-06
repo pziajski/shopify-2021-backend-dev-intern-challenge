@@ -10,6 +10,7 @@ import { API_ENDPOINT } from "../../App";
 
 const HomePage: React.FC = () => {
 	const [uploadingState, setUploadingState] = useState(false);
+	const [loadingState, setLoadingState] = useState(true);
 	const [ uploadedImages, setUploadedImages ] = useState<Array<UploadedImageObject> | []>([]);
 	useEffect(() => {
 		axios
@@ -17,6 +18,7 @@ const HomePage: React.FC = () => {
 			.then(res => {
 				const images = res.data.images as Array<UploadedImageObject>;
 				setUploadedImages(images || []);
+				setLoadingState(false);
 			})
 			.catch(err => {
 				console.log(err);
@@ -47,7 +49,9 @@ const HomePage: React.FC = () => {
 	return (
 		<div className="home-page">
 			<Navbar submitUpload={submitUpload} />
-			<ImageList uploadedImages={uploadedImages} />
+			<ImageList
+				uploadedImages={uploadedImages}
+				loadingState={loadingState} />
 			{
 				uploadingState
 					? <HoverDiv />
