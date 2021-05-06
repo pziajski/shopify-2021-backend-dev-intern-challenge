@@ -1,0 +1,8 @@
+@use "../../partials/reset.scss";
+@use "../../partials/color-palette.scss" as *;
+
+.home-page {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}

@@ -1,0 +1,40 @@
+@use "../../partials/mixins.scss" as *;
+@use "../../partials/color-palette.scss" as *;
+
+.navbar {
+	position: sticky;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	background: $primary-cream;
+	justify-content: space-between;
+	padding: 1rem 1rem;
+	box-shadow: 0 0 10px 0 black;
+
+	&__title {
+		font-size: 1.5rem;
+	}
+
+	&__upload {
+		display: flex;
+		gap: 1rem;
+	}
+
+	&__upload-input {
+		display: none;
+	}
+
+	&__upload-button {
+		@include button-styling;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.5rem;
+		width: 8rem;
+		height: 3rem;
+		cursor: pointer;
+	}
+}
